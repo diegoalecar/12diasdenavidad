@@ -10,19 +10,25 @@ body {
   margin: 0;
   color: var(--cream);
   font-family: Georgia, "Times New Roman", serif;
-  background: #3b2418 url("fondo-madera.jpg") center top / 100% auto repeat-y;
+  background: #3b2418;
   overscroll-behavior-x: none;
 }
 button { font: inherit; }
 .game-shell {
   position: relative;
   isolation: isolate;
-  width: min(100%, 650px);
+  /* El juego conserva un ancho de móvil también cuando se abre en computadora. */
+  width: min(100%, 430px);
   min-height: 100svh;
   margin: 0 auto;
-  padding: max(12px, env(safe-area-inset-top)) clamp(12px, 3.2vw, 24px) max(24px, env(safe-area-inset-bottom));
+  padding: max(12px, env(safe-area-inset-top)) clamp(12px, 3.2vw, 14px) max(24px, env(safe-area-inset-bottom));
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(39,20,10,.24), rgba(39,20,10,.04) 48%, rgba(39,20,10,.3));
+  background-color: #60351f;
+  /* El fondo mantiene su proporción original 1080 × 1920; no se estira ni se repite. */
+  background-image: linear-gradient(180deg, rgba(39,20,10,.24), rgba(39,20,10,.04) 48%, rgba(39,20,10,.3)), url("fondo-madera.jpg");
+  background-position: center top, center top;
+  background-size: 100% 100%, 100% auto;
+  background-repeat: no-repeat, no-repeat;
 }
 
 /* Sobres escalonados: se conserva la composición del arte original. */
@@ -96,9 +102,10 @@ button { font: inherit; }
 .deck-section {
   position: absolute;
   z-index: 30;
-  top: max(10px, env(safe-area-inset-top));
-  right: clamp(12px, 3.2vw, 24px);
-  width: clamp(72px, 22%, 126px);
+  top: max(14px, env(safe-area-inset-top));
+  right: clamp(10px, 3%, 14px);
+  /* Baraja compacta: cabe en el espacio blanco de la esquina superior derecha. */
+  width: clamp(68px, 19%, 90px);
   padding: 0;
   border: 0;
 }
@@ -145,6 +152,12 @@ button { font: inherit; }
   -webkit-user-drag: none;
 }
 .postcard.selected { filter: drop-shadow(0 0 7px #ffe18b); }
+/* Al arrastrar una postal, ocultamos su lugar original para revelar la carta que estaba detrás. */
+.postcard.dragging-source {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
 .postcard.selected::after {
   content: ""; position: absolute; inset: 1px;
   border: 2px solid #ffdf80; border-radius: 3px; pointer-events: none;
@@ -154,7 +167,7 @@ button { font: inherit; }
 .drag-ghost {
   position: fixed !important;
   z-index: 9999 !important;
-  width: min(24vw, 112px) !important;
+  /* El ancho real se toma de la carta original mediante el estilo inline. */
   height: auto !important;
   aspect-ratio: 0.82 !important;
   pointer-events: none !important;
@@ -164,15 +177,15 @@ button { font: inherit; }
 }
 .deck-count {
   display: block;
-  margin: 6px 0 0 auto;
+  margin: 4px 0 0 auto;
   width: max-content;
   max-width: 100%;
-  padding: 3px 6px;
+  padding: 3px 5px;
   border-radius: 999px;
   color: #f6e4bd;
   background: #3b2118b8;
   text-align: center;
-  font: 10px/1.2 Arial, sans-serif;
+  font: 9px/1.2 Arial, sans-serif;
   text-shadow: 0 1px 3px #271308;
 }
 .feedback {
@@ -211,17 +224,10 @@ button { font: inherit; }
 .win-card .eyebrow { color: #936b2c; }
 .win-card button { color: var(--ink); background: transparent; border-color: #9e7735; }
 
-@media (min-width: 540px) {
-  .game-shell { padding: 22px 28px 28px; }
-  .envelopes { gap: 13px 12px; padding-top: 72px; padding-bottom: 20px; }
-  .deck-section { top: 20px; right: 28px; width: 112px; }
-  .postcard-placed { width: 27%; }
-  .deck-count { font-size: 11px; }
-}
 @media (max-width: 360px) {
   .game-shell { padding-left: 9px; padding-right: 9px; }
   .envelopes { gap: 7px 4px; padding-top: 42px; }
-  .deck-section { right: 9px; width: 70px; }
+  .deck-section { right: 9px; width: 66px; }
   .postcard-placed { width: 28%; left: 4%; }
   .deck-count { font-size: 9px; padding: 3px 5px; }
 }
