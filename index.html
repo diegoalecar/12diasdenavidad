@@ -10,16 +10,6 @@
 </head>
 <body>
   <main class="game-shell">
-    <header class="intro">
-      <p class="eyebrow">Una colección navideña</p>
-      <h1>Los 12 días de Navidad</h1>
-      <p class="instructions" id="instructions">Arrastra cada postal hasta el sobre con el mismo número.</p>
-      <div class="progress-wrap" aria-live="polite">
-        <span id="progress-label">0 de 12 postales</span>
-        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
-      </div>
-    </header>
-
     <section class="envelopes" id="envelopes" aria-label="Sobres numerados"></section>
 
     <section class="deck-section" aria-label="Mazo de postales">
@@ -32,8 +22,6 @@
       </div>
       <div class="deck" id="deck" aria-label="Postales mezcladas"></div>
     </section>
-
-    <p class="feedback" id="feedback" role="status" aria-live="polite">Busca una postal en el mazo y arrástrala hasta el sobre con el mismo número.</p>
     <button class="restart" id="restart" type="button">Mezclar de nuevo</button>
 
     <div class="win-screen" id="win-screen" hidden>
