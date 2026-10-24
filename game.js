@@ -73,8 +73,10 @@
 
       // Desplazamiento diagonal pequeño: se reconoce la carta superior y quedan
       // bordes visibles de las inferiores para poder tomar cualquiera de ellas.
-      card.style.setProperty("--stack-x", `${index * 1.5}px`);
-      card.style.setProperty("--stack-y", `${index * 2.5}px`);
+      // Desplazamiento mínimo y uniforme: se reconoce como una sola baraja
+      // y deja ver bordes suficientes para poder tomar cartas inferiores.
+      card.style.setProperty("--stack-x", `${index * 0.7}px`);
+      card.style.setProperty("--stack-y", `${index * 1.25}px`);
       card.style.zIndex = String(index + 1);
       card.setAttribute("aria-label", `Arrastrar postal ${pad(number)} al sobre ${pad(number)}`);
       card.innerHTML = `<img src="postal-${pad(number)}.png" alt="Postal ${pad(number)}" draggable="false">`;
@@ -102,7 +104,7 @@
     ghost.style.width = `${rect.width}px`;
     document.body.appendChild(ghost);
 
-    card.classList.add("selected");
+    card.classList.add("selected", "dragging-source");
     document.querySelectorAll(".envelope-slot").forEach(slot => slot.classList.add("target"));
     drag = { number, card, ghost, pointerId: event.pointerId };
     setFeedback(`Postal ${pad(number)} seleccionada. Suéltala sobre el sobre ${pad(number)}.`);
@@ -153,7 +155,7 @@
   function cleanupDrag() {
     if (!drag) return;
     drag.ghost.remove();
-    drag.card.classList.remove("selected");
+    drag.card.classList.remove("selected", "dragging-source");
     document.querySelectorAll(".envelope-slot").forEach(slot => slot.classList.remove("target", "drop-target"));
     window.removeEventListener("pointermove", moveDrag);
     window.removeEventListener("pointerup", endDrag);
