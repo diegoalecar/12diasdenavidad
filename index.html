@@ -10,20 +10,30 @@
 </head>
 <body>
   <main class="game-shell">
-    <section class="envelopes" id="envelopes" aria-label="Sobres numerados"></section>
+    <section class="game-board" aria-label="Tablero navideño">
+  <section
+    class="envelopes"
+    id="envelopes"
+    aria-label="Sobres numerados">
+  </section>
 
-    <section class="deck-section" aria-label="Mazo de postales">
-      <div class="deck-heading">
-        <div>
-          <h2>Postales</h2>
-          <p class="deck-hint">Arrastra una postal visible hasta su sobre.</p>
-        </div>
-        <span id="deck-count">12 disponibles</span>
-      </div>
-      <div class="deck" id="deck" aria-label="Postales mezcladas"></div>
-    </section>
-    <button class="restart" id="restart" type="button">Mezclar de nuevo</button>
+  <section
+    class="deck-section"
+    id="deck-section"
+    aria-label="Baraja de postales">
 
+    <div class="deck" id="deck" aria-label="Baraja mezclada"></div>
+
+    <span id="deck-count" aria-live="polite">
+      12 disponibles
+    </span>
+  </section>
+</section>
+
+<button class="restart" id="restart" type="button">
+  Mezclar de nuevo
+</button>
+    
     <div class="win-screen" id="win-screen" hidden>
       <div class="win-card">
         <span class="win-star">✦</span>
