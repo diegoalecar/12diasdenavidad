@@ -10,30 +10,15 @@
 </head>
 <body>
   <main class="game-shell">
-    <section class="game-board" aria-label="Tablero navideño">
-  <section
-    class="envelopes"
-    id="envelopes"
-    aria-label="Sobres numerados">
-  </section>
+    <section class="envelopes" id="envelopes" aria-label="Sobres numerados"></section>
 
-  <section
-    class="deck-section"
-    id="deck-section"
-    aria-label="Baraja de postales">
+    <section class="deck-section" aria-label="Baraja de postales">
+      <div class="deck" id="deck" aria-label="Baraja mezclada"></div>
+      <span id="deck-count" class="deck-count" aria-live="polite">12 disponibles</span>
+    </section>
 
-    <div class="deck" id="deck" aria-label="Baraja mezclada"></div>
+    <button class="restart" id="restart" type="button">Mezclar de nuevo</button>
 
-    <span id="deck-count" aria-live="polite">
-      12 disponibles
-    </span>
-  </section>
-</section>
-
-<button class="restart" id="restart" type="button">
-  Mezclar de nuevo
-</button>
-    
     <div class="win-screen" id="win-screen" hidden>
       <div class="win-card">
         <span class="win-star">✦</span>
@@ -43,6 +28,7 @@
         <button id="play-again" type="button">Volver a jugar</button>
       </div>
     </div>
+
     <audio id="victory-audio" preload="auto" src="cancion-navidad.mp3"></audio>
   </main>
   <script src="game.js"></script>
