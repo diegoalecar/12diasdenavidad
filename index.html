@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#4b2919">
+  <meta name="description" content="Completa la colección navideña de las 12 postales de Da-Gas.">
   <title>Los 12 días de Navidad | Da-Gas</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,27 +13,29 @@
     <header class="intro">
       <p class="eyebrow">Una colección navideña</p>
       <h1>Los 12 días de Navidad</h1>
-      <p class="instructions" id="instructions">Selecciona una postal y colócala en el sobre con el mismo número.</p>
+      <p class="instructions" id="instructions">Arrastra cada postal hasta el sobre con el mismo número.</p>
       <div class="progress-wrap" aria-live="polite">
         <span id="progress-label">0 de 12 postales</span>
         <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
       </div>
     </header>
 
-    <section class="envelopes" id="envelopes" aria-label="Sobres numerados">
-      <!-- Los 12 sobres se generan desde game.js -->
-    </section>
+    <section class="envelopes" id="envelopes" aria-label="Sobres numerados"></section>
 
-    <section class="deck-section" aria-label="Baraja de postales">
+    <section class="deck-section" aria-label="Mazo de postales">
       <div class="deck-heading">
-        <h2>Postales</h2>
+        <div>
+          <h2>Postales</h2>
+          <p class="deck-hint">Arrastra una postal visible hasta su sobre.</p>
+        </div>
         <span id="deck-count">12 disponibles</span>
       </div>
-      <div class="deck" id="deck"></div>
+      <div class="deck" id="deck" aria-label="Postales mezcladas"></div>
     </section>
 
-    <p class="feedback" id="feedback" role="status" aria-live="polite">Toca una postal para comenzar.</p>
+    <p class="feedback" id="feedback" role="status" aria-live="polite">Busca una postal en el mazo y arrástrala hasta el sobre con el mismo número.</p>
     <button class="restart" id="restart" type="button">Mezclar de nuevo</button>
+
     <div class="win-screen" id="win-screen" hidden>
       <div class="win-card">
         <span class="win-star">✦</span>
