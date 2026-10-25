@@ -57,18 +57,19 @@ button { font: inherit; }
 .envelope-slot img.envelope-art {
   width: 100%; height: 100%; display: block; object-fit: contain; pointer-events: none;
 }
-.envelope-slot:nth-child(1) { grid-column: 2; grid-row: 1; transform: translateY(4%); }
-.envelope-slot:nth-child(2) { grid-column: 1; grid-row: 2; transform: rotate(-2deg); }
-.envelope-slot:nth-child(3) { grid-column: 2; grid-row: 2; transform: rotate(1.5deg); }
-.envelope-slot:nth-child(4) { grid-column: 1; grid-row: 3; transform: rotate(-1.5deg); }
-.envelope-slot:nth-child(5) { grid-column: 2; grid-row: 3; transform: rotate(1deg); }
-.envelope-slot:nth-child(6) { grid-column: 1; grid-row: 4; transform: rotate(-1deg); }
-.envelope-slot:nth-child(7) { grid-column: 2; grid-row: 4; transform: rotate(.8deg); }
-.envelope-slot:nth-child(8) { grid-column: 3; grid-row: 4; transform: rotate(1.5deg); }
-.envelope-slot:nth-child(9) { grid-column: 1; grid-row: 5; transform: rotate(-1.2deg); }
-.envelope-slot:nth-child(10) { grid-column: 2; grid-row: 5; transform: rotate(1deg); }
-.envelope-slot:nth-child(11) { grid-column: 2; grid-row: 6; transform: rotate(-1deg); }
-.envelope-slot:nth-child(12) { grid-column: 3; grid-row: 5; transform: rotate(1.5deg); }
+/* Distribución según el esquema enviado: 1 arriba centrado; 2–4, 5–7 y 8–10 en filas de tres; 11 y 12 centrados al final. */
+.envelope-slot:nth-child(1)  { grid-column: 2; grid-row: 1; }
+.envelope-slot:nth-child(2)  { grid-column: 1; grid-row: 2; }
+.envelope-slot:nth-child(3)  { grid-column: 2; grid-row: 2; }
+.envelope-slot:nth-child(4)  { grid-column: 3; grid-row: 2; }
+.envelope-slot:nth-child(5)  { grid-column: 1; grid-row: 3; }
+.envelope-slot:nth-child(6)  { grid-column: 2; grid-row: 3; }
+.envelope-slot:nth-child(7)  { grid-column: 3; grid-row: 3; }
+.envelope-slot:nth-child(8)  { grid-column: 1; grid-row: 4; }
+.envelope-slot:nth-child(9)  { grid-column: 2; grid-row: 4; }
+.envelope-slot:nth-child(10) { grid-column: 3; grid-row: 4; }
+.envelope-slot:nth-child(11) { grid-column: 2; grid-row: 5; }
+.envelope-slot:nth-child(12) { grid-column: 2; grid-row: 6; }
 .envelope-slot.target { filter: drop-shadow(0 0 8px #ffe59a); }
 .envelope-slot.drop-target { filter: drop-shadow(0 0 11px #ffe59a) brightness(1.08); transform: translateY(-2px) scale(1.025); }
 .envelope-slot.correct { filter: drop-shadow(0 0 8px #ffd46c); }
