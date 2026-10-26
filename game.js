@@ -202,13 +202,7 @@
         );
       }, index * 90);
     });
-    if (winScreen) {
-      winScreen.hidden = false;
-      winScreen.classList.remove("celebrate");
-      // Reinicia la animación de celebración cada vez que se completa el juego.
-      void winScreen.offsetWidth;
-      winScreen.classList.add("celebrate");
-    }
+    if (winScreen) winScreen.hidden = false;
     if (audio) {
       audio.currentTime = 0;
       audio.play().catch(() => {
@@ -221,10 +215,7 @@
     if (drag) cleanupDrag();
     placed = new Set();
     gameFinished = false;
-    if (winScreen) {
-      winScreen.hidden = true;
-      winScreen.classList.remove("celebrate");
-    }
+    if (winScreen) winScreen.hidden = true;
     if (audio) {
       audio.pause();
       audio.currentTime = 0;
