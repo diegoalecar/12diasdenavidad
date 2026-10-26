@@ -17,21 +17,21 @@ button { font: inherit; }
 .game-shell {
   position: relative;
   isolation: isolate;
-  /* El juego conserva un ancho de móvil también cuando se abre en computadora. */
+  /* El juego conserva un ancho de mÃ³vil tambiÃ©n cuando se abre en computadora. */
   width: min(100%, 430px);
   min-height: 100svh;
   margin: 0 auto;
   padding: max(12px, env(safe-area-inset-top)) clamp(12px, 3.2vw, 14px) max(24px, env(safe-area-inset-bottom));
   overflow: hidden;
   background-color: #60351f;
-  /* El fondo mantiene su proporción original 1080 × 1920; no se estira ni se repite. */
+  /* El fondo mantiene su proporciÃ³n original 1080 Ã— 1920; no se estira ni se repite. */
   background-image: linear-gradient(180deg, rgba(39,20,10,.24), rgba(39,20,10,.04) 48%, rgba(39,20,10,.3)), url("fondo-madera.jpg");
   background-position: center top, center top;
   background-size: 100% 100%, 100% auto;
   background-repeat: no-repeat, no-repeat;
 }
 
-/* Sobres escalonados: se conserva la composición del arte original. */
+/* Sobres escalonados: se conserva la composiciÃ³n del arte original. */
 .envelopes {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -57,7 +57,7 @@ button { font: inherit; }
 .envelope-slot img.envelope-art {
   width: 100%; height: 100%; display: block; object-fit: contain; pointer-events: none;
 }
-/* Distribución según el esquema enviado: 1 arriba centrado; 2–4, 5–7 y 8–10 en filas de tres; 11 y 12 centrados al final. */
+/* DistribuciÃ³n segÃºn el esquema enviado: 1 arriba centrado; 2â€“4, 5â€“7 y 8â€“10 en filas de tres; 11 y 12 centrados al final. */
 .envelope-slot:nth-child(1)  { grid-column: 2; grid-row: 1; }
 .envelope-slot:nth-child(2)  { grid-column: 1; grid-row: 2; }
 .envelope-slot:nth-child(3)  { grid-column: 2; grid-row: 2; }
@@ -153,7 +153,7 @@ button { font: inherit; }
   -webkit-user-drag: none;
 }
 .postcard.selected { filter: drop-shadow(0 0 7px #ffe18b); }
-/* Al arrastrar una postal, ocultamos su lugar original para revelar la carta que estaba detrás. */
+/* Al arrastrar una postal, ocultamos su lugar original para revelar la carta que estaba detrÃ¡s. */
 .postcard.dragging-source {
   visibility: hidden !important;
   opacity: 0 !important;
@@ -215,11 +215,11 @@ button { font: inherit; }
 }
 .win-screen[hidden] { display: none; }
 .win-card {
-  width: min(100%, 360px); text-align: center; padding: 30px 22px;
+  width: min(100%, 360px); text-align: center; padding: 24px 22px 30px;
   color: var(--ink); background: var(--cream); border: 1px solid #d6b86c;
   box-shadow: 0 15px 55px #0008;
 }
-.win-star { color: #b88b32; font-size: 34px; }
+.win-mascot { display: block; width: 104px; height: 116px; object-fit: contain; margin: 0 auto 8px; }
 .win-card h2 { font-size: 32px; margin: 4px 0 10px; font-weight: 500; }
 .win-card p:not(.eyebrow) { font-size: 15px; line-height: 1.5; }
 .win-card .eyebrow { color: #936b2c; }
