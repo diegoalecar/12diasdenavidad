@@ -195,19 +195,23 @@
   function finishGame() {
     gameFinished = true;
     document.querySelectorAll(".envelope-slot").forEach((slot, index) => {
-      setTimeout(() => {
-        slot.animate(
-          [{ filter: "brightness(1)" }, { filter: "brightness(1.55) drop-shadow(0 0 10px #ffdf81)" }, { filter: "brightness(1.15)" }],
-          { duration: 650 }
-        );
-      }, index * 90);
+      // Solo transform/opacity: suele ser más ligero que animar filtros en iPhone.
+      slot.style.setProperty("--celebrate-delay", `${index * 55}ms`);
+      slot.classList.add("celebrate");
     });
     if (winScreen) winScreen.hidden = false;
     if (audio) {
-      audio.currentTime = 0;
-      audio.play().catch(() => {
-        setFeedback("¡Colección completa! No se pudo reproducir la canción. Revisa que cancion-navidad.mp3 esté en la raíz del repositorio.");
-      });
+      // En iOS conviene mantener el elemento de audio sencillo y manejar
+      // el rechazo de play() sin asumir que la causa sea siempre la ruta.
+      audio.pause();
+      try { audio.currentTime = 0; } catch (_) {}
+      const playback = audio.play();
+      if (playback && typeof playback.catch === "function") {
+        playback.catch((error) => {
+          console.warn("No se pudo reproducir el audio de victoria:", error);
+          setFeedback("¡Colección completa! No se pudo reproducir el audio. Comprueba que audio-victoria.wav exista junto a index.html y que se pueda abrir directamente.");
+        });
+      }
     }
   }
 
@@ -215,6 +219,10 @@
     if (drag) cleanupDrag();
     placed = new Set();
     gameFinished = false;
+    document.querySelectorAll(".envelope-slot.celebrate").forEach(slot => {
+      slot.classList.remove("celebrate");
+      slot.style.removeProperty("--celebrate-delay");
+    });
     if (winScreen) winScreen.hidden = true;
     if (audio) {
       audio.pause();
